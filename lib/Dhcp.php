@@ -804,4 +804,29 @@ class Dhcp
 		return $array;
 	}
 
+	public function getScopeWithFailover($scopeid)
+	{
+		$scope = $this->getScope($scopeid);
+		if(!isset($scope))
+		{
+			return null;
+		}
+		$scope['failover'] = $this->getScopeFailover($scopeid);
+		return $scope;
+	}
+
+	public function getScopeDetailed($scopeid)
+	{
+		$scope = $this->getScope($scopeid);
+        if(!isset($scope))
+		{
+			return null;
+		}
+		$scope['statistics'] = $this->getScopeStatistics($scopeid);
+		$scope['reservations'] = $this->getScopeReservations($scopeid);
+		$scope['leases'] = $this->getScopeLeases($scopeid);
+		$scope['failover'] = $this->getScopeFailover($scopeid);
+		return $scope;
+	}
+
 }
