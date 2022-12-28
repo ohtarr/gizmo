@@ -145,7 +145,7 @@ class Dhcp
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
-		return $array;
+		return $array[0];
     }
 
     public function getScopeReservations($scopeid)
