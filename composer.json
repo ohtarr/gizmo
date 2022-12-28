@@ -1,0 +1,27 @@
+{
+    "name": "ohtarr/gizmo",
+    "type": "library",
+    "description": "PHP7 library to access a custom API called Gizmo",
+    "keywords": [
+        "php7",
+        "api"
+        ],
+    "homepage": "http://github.com/ohtarr/gizmo",
+    "authors": [
+        {
+            "name": "ohtarr",
+            "email": "ohtarr@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.0",
+        "guzzlehttp/guzzle": "7.5.x-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "ohtarr\\Gizmo\\": "lib/"
+        }
+    }
+}
