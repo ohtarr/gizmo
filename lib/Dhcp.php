@@ -35,10 +35,10 @@ class Dhcp
     public $token;
     public $baseurl;
 
-	public function __construct($token, $baseurl)
+	public function __construct($baseurl, $token = null)
 	{
-        $this->token = $token;
         $this->baseurl = $baseurl;
+        $this->token = $token;
 	}
 
 	public static function getAzureToken($tenantid, $clientid, $clientsecret, $scope)
