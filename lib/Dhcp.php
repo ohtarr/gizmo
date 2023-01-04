@@ -43,7 +43,7 @@ class Dhcp
 
 	public static function getAzureToken($tenantid, $clientid, $clientsecret, $scope)
 	{
-		$verb = "post";
+		$verb = "POST";
         $url = "https://login.microsoftonline.com/" . $tenantid . "/oauth2/v2.0/token";
         $body = [
             'grant_type' => 'client_credentials',
@@ -61,7 +61,7 @@ class Dhcp
         ];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -81,7 +81,7 @@ class Dhcp
         ];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -101,7 +101,7 @@ class Dhcp
         ];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -121,7 +121,34 @@ class Dhcp
         ];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
+        $apiRequest = $client->request($verb, $url, $params);
+        $response = $apiRequest->getBody()->getContents();
+        $array = json_decode($response,true);
+		return $array;
+	}
+
+    public function getScopesBySupernet($network, $bitmask)
+	{
+        $body = [
+            'network'   =>  $network,
+            'bitmask'   =>  $bitmask,
+        ];
+
+        $verb = "POST";
+        $url = $this->baseurl . "/api/dhcp/scope/supernet/";
+
+        $options = [];
+        $params = [
+            'headers'   =>  [
+                'Content-Type'  => 'application/json',
+                'Accept'        => 'application/json',
+             ],
+             'body'  =>  json_encode($body),
+        ];
+
+        $client = new GuzzleHttpClient($options);
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -141,7 +168,7 @@ class Dhcp
         ];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -161,7 +188,7 @@ class Dhcp
         ];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -195,7 +222,7 @@ class Dhcp
 		];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -229,7 +256,7 @@ class Dhcp
 		];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -260,7 +287,7 @@ class Dhcp
 		];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -285,7 +312,7 @@ class Dhcp
         ];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -305,7 +332,7 @@ class Dhcp
         ];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -336,7 +363,7 @@ class Dhcp
 		];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -367,7 +394,7 @@ class Dhcp
 		];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -398,7 +425,7 @@ class Dhcp
 		];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -418,7 +445,7 @@ class Dhcp
         ];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -459,7 +486,7 @@ class Dhcp
 		];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -491,7 +518,7 @@ class Dhcp
 		];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -511,7 +538,7 @@ class Dhcp
         ];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -531,7 +558,7 @@ class Dhcp
         ];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -565,7 +592,7 @@ class Dhcp
 		];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -599,7 +626,7 @@ class Dhcp
 		];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -619,7 +646,7 @@ class Dhcp
         ];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -646,7 +673,7 @@ class Dhcp
 		];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -673,7 +700,7 @@ class Dhcp
 		];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -703,7 +730,7 @@ class Dhcp
 		];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -732,7 +759,7 @@ class Dhcp
 		];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -764,7 +791,7 @@ class Dhcp
 		];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -797,7 +824,7 @@ class Dhcp
 		];
 
         $client = new GuzzleHttpClient($options);
-        //Build a Guzzle POST request
+        //Build a Guzzle request
         $apiRequest = $client->request($verb, $url, $params);
         $response = $apiRequest->getBody()->getContents();
         $array = json_decode($response,true);
@@ -828,5 +855,7 @@ class Dhcp
 		$scope['failover'] = $this->getScopeFailover($scopeid);
 		return $scope;
 	}
+
+
 
 }
